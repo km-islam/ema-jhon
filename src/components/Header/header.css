@@ -1,0 +1,49 @@
+header {
+  background-color: #111;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+.header-wrap {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav ul {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav ul li a {
+  color: #fff;
+}
+.nav ul li a:hover {
+  color: var(--primary);
+}
+.search-form {
+  background-color: var(--site-bg);
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  border-radius: 4px;
+}
+.search-form > input {
+  padding: 5px 10px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+}
+
+.search-form > button {
+  border-radius: 0 4px 4px 0;
+  background-color: var(--primary);
+  color: #fff;
+}
+.cart {
+  font-size: 30px;
+  color: #fff;
+  cursor: pointer;
+}
