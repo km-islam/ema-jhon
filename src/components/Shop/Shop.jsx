@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import Product from "./Product";
-import { addToDb, getShoppingCart } from "../../utilities/fakedb";
+import {
+  addToDb,
+  deleteShoppingCart,
+  getShoppingCart,
+} from "../../utilities/fakedb";
 import Banner from "../Banner/Banner";
 
 import Cart from "../Cart/Cart";
@@ -47,6 +51,10 @@ const Shop = () => {
     addToDb(item.id);
   };
 
+  const handelClearCart = () => {
+    setCart([]);
+    deleteShoppingCart();
+  };
 
   return (
     <>
@@ -66,43 +74,12 @@ const Shop = () => {
 
             {/* Cart */}
 
-            <Cart cart={cart} />
-            {/* <div className="product-carts">
-              <div>
-                <h3>Order Summary</h3>
-                <ul className="cart-info">
-                  <li>
-                    <small>Selected Items:</small>
-                    <span>{quantity}</span>
-                  </li>
-                  <li>
-                    <small>Total Price:</small>
-                    <span>${total}</span>
-                  </li>
-                  <li>
-                    <small>Shipping Charge:</small>
-                    <span>${shipping}</span>
-                  </li>
-                  <li>
-                    <small>Tax:</small>
-                    <span>${tax}</span>
-                  </li>
-                  <li>
-                    <small>Grand Total:</small>
-                    <span>${grandTotal}</span>
-                  </li>
-                </ul>
-
-                <div className="btn-group">
-                  <button>
-                    Clear Cart <RiDeleteBin6Line />
-                  </button>
-                  <Link to={"checkout"} className="checkout-btn">
-                    Check Out <BsArrowRightCircleFill />
-                  </Link>
-                </div>
-              </div>
-            </div> */}
+            <Cart
+              cart={cart}
+              handelClearCart={handelClearCart}
+              btnName={"View Cart"}
+              route={"order"}
+            />
           </div>
         </div>
       </div>

@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, } from "react-router-dom";
 import { BsArrowRightCircleFill } from "react-icons/bs";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
-const Cart = ({ cart }) => {
-
+const Cart = ({ cart, handelClearCart, btnName ,route}) => {
   // Cart calculation
   let total = 0;
   let shipping = 0;
@@ -46,11 +45,11 @@ const Cart = ({ cart }) => {
           </ul>
 
           <div className="btn-group">
-            <button>
+            <button onClick={handelClearCart}>
               Clear Cart <RiDeleteBin6Line />
             </button>
-            <Link to={"checkout"} className="checkout-btn">
-              Check Out <BsArrowRightCircleFill />
+            <Link to={route} className="checkout-btn">
+              {btnName} <BsArrowRightCircleFill />
             </Link>
           </div>
         </div>

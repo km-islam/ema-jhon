@@ -3,7 +3,6 @@ import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 const OrderProduct = ({ product, handelRemoveFromCart }) => {
-  console.log(product);
   return (
     <div className="order-product">
       <div className="order-img">

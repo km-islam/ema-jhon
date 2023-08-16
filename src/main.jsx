@@ -20,13 +20,13 @@ const router = createBrowserRouter([
         element: <Shop />,
       },
       {
-        path: "checkout",
-        element: <Checkout />,
-      },
-      {
         path: "order",
         element: <Orders />,
         loader: cartProductLoader,
+      },
+      {
+        path: "order/checkout",
+        element: <Checkout />,
       },
       {
         path: "inventory",
