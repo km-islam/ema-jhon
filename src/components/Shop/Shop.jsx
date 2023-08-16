@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import "./shop.css";
 import Product from "./Product";
-import { BsArrowRightCircleFill } from "react-icons/bs";
-import { RiDeleteBin6Line } from "react-icons/ri";
 import { addToDb, getShoppingCart } from "../../utilities/fakedb";
+import Banner from "../Banner/Banner";
+
+import Cart from "../Cart/Cart";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -47,71 +47,66 @@ const Shop = () => {
     addToDb(item.id);
   };
 
-  // Cart calculation
-  let total = 0;
-  let shipping = 0;
-  let quantity = 0;
-  for (const product of cart) {
-    quantity = quantity + product.quantity;
-    shipping = shipping + product.shipping * product.quantity;
-    total = total + product.price * product.quantity;
-  }
-  const tax = parseFloat((total * 0.1).toFixed(2));
-  const grandTotal = total + shipping + tax;
 
   return (
-    <div className="shop">
-      <div className="container">
-        <div className="shop-container">
-          <div className="shop-products">
-            {products.map((product) => (
-              <Product
-                product={product}
-                key={product.id}
-                handler={handelCart}
-              />
-            ))}
-          </div>
-          {/* Cart */}
-          <div className="product-carts">
-            <div>
-              <h3>Order Summary</h3>
-              <ul className="cart-info">
-                <li>
-                  <small>Selected Items:</small>
-                  <span>{quantity}</span>
-                </li>
-                <li>
-                  <small>Total Price:</small>
-                  <span>${total}</span>
-                </li>
-                <li>
-                  <small>Shipping Charge:</small>
-                  <span>${shipping}</span>
-                </li>
-                <li>
-                  <small>Tax:</small>
-                  <span>${tax}</span>
-                </li>
-                <li>
-                  <small>Grand Total:</small>
-                  <span>${grandTotal}</span>
-                </li>
-              </ul>
-
-              <div className="btn-group">
-                <button>
-                  Clear Cart <RiDeleteBin6Line />{" "}
-                </button>
-                <button>
-                  Check Out <BsArrowRightCircleFill />{" "}
-                </button>
-              </div>
+    <>
+      <Banner />
+      <div className="shop">
+        <div className="container">
+          <div className="shop-container">
+            <div className="shop-products">
+              {products.map((product) => (
+                <Product
+                  product={product}
+                  key={product.id}
+                  handler={handelCart}
+                />
+              ))}
             </div>
+
+            {/* Cart */}
+
+            <Cart cart={cart} />
+            {/* <div className="product-carts">
+              <div>
+                <h3>Order Summary</h3>
+                <ul className="cart-info">
+                  <li>
+                    <small>Selected Items:</small>
+                    <span>{quantity}</span>
+                  </li>
+                  <li>
+                    <small>Total Price:</small>
+                    <span>${total}</span>
+                  </li>
+                  <li>
+                    <small>Shipping Charge:</small>
+                    <span>${shipping}</span>
+                  </li>
+                  <li>
+                    <small>Tax:</small>
+                    <span>${tax}</span>
+                  </li>
+                  <li>
+                    <small>Grand Total:</small>
+                    <span>${grandTotal}</span>
+                  </li>
+                </ul>
+
+                <div className="btn-group">
+                  <button>
+                    Clear Cart <RiDeleteBin6Line />
+                  </button>
+                  <Link to={"checkout"} className="checkout-btn">
+                    Check Out <BsArrowRightCircleFill />
+                  </Link>
+                </div>
+              </div>
+            </div> */}
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
